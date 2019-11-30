@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Client Management</h2>
+{% for field in form %}
+<form method="POST" class="post-form">{% csrf_token %}
+    <div class="form-group">
+        {{ field.errors }}
+        <label>{{ field.label }}</label>
+        <div class="controls">{{ field }}</div>
+    </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+{% endblock %}

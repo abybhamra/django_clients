@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>New Client Onboarding</h2>
+<form method="POST" class="post-form">
+    {% csrf_token %}
+
+    {% for field in form %}
+    <div class="form-group">
+        {{ field.errors }}
+        <label>{{ field.label }}</label>
+        <div class="controls">{{ field }}</div>
+    </div>
+    {% endfor %}
+
+    {{ address.management_form }}
+    {% for address_form in address.forms %}
+        {% for field in address_form.visible_fields %}
+        <div class="form-group">
+            {{ field.errors }}
+            <label>{{ field.label }}</label>
+            <div class="controls">{{ field }}</div>
+        </div>
+        {% endfor %}
+    {% endfor %}
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+{% endblock %}
