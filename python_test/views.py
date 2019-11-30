@@ -11,6 +11,19 @@ class ClientListView(ListView):
     model = Client
     template_name = 'client/list.html'
 
+    def get_queryset(self):
+        search_key = self.request.GET.get('search_key', None)
+        search_value = self.request.GET.get('search_value', None)
+        order = self.request.GET.get('sort_by', 'id')
+        query_set = Client.objects.all()
+        if search_key:
+            filter_kwargs = {}
+            filter_kwargs[search_key] = search_value
+            query_set = query_set.filter(**filter_kwargs)
+        if order:
+            query_set = query_set.order_by(order)
+        return query_set
+
 
 class ClientDetailView(DetailView):
     model = Client
