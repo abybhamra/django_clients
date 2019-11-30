@@ -4,6 +4,7 @@ from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.list import ListView
 
 from python_test.forms import AddressFormset
+from python_test.forms import ClientSearchForm
 from python_test.models import Client
 
 
@@ -16,13 +17,17 @@ class ClientListView(ListView):
         search_value = self.request.GET.get('search_value', None)
         order = self.request.GET.get('sort_by', 'id')
         query_set = Client.objects.all()
-        if search_key:
-            filter_kwargs = {}
-            filter_kwargs[search_key] = search_value
+        if search_key and search_value:
+            filter_kwargs = {search_key + "__icontains": search_value}
             query_set = query_set.filter(**filter_kwargs)
         if order:
             query_set = query_set.order_by(order)
         return query_set
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data["search"] = ClientSearchForm()
+        return data
 
 
 class ClientDetailView(DetailView):
