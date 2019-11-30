@@ -1,6 +1,6 @@
 from django.urls import reverse
 from django.views.generic import DetailView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.list import ListView
 
 from python_test.forms import AddressFormset
@@ -38,6 +38,15 @@ class ClientCreateView(CreateView):
             address.instance = self.object
             address.save()
         return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse("client-list")
+
+
+class ClientEditView(UpdateView):
+    model = Client
+    template_name = 'client/edit.html'
+    fields = ["client_name", "contact_name", "email", "phone_number"]
 
     def get_success_url(self):
         return reverse("client-list")

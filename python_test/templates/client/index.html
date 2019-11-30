@@ -13,7 +13,7 @@
       {% for address in client.addresses %}
         <p class="card-text"><strong>Address:</strong> {{ address }}</p>
       {% endfor %}
-    <a href="edit/{{ client.client_name }}" class="btn btn-primary">Edit</a>
+    <a href="{% url 'client-edit' client.id%}" class="btn btn-primary">Edit</a>
   </div>
 </div>
 {% endblock %}

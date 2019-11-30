@@ -17,7 +17,7 @@ from django.conf.urls import url
 from django.urls import path
 from django.contrib import admin
 from django.views.generic import TemplateView
-from python_test.views import ClientListView, ClientDetailView, ClientCreateView
+from python_test.views import ClientListView, ClientDetailView, ClientCreateView, ClientEditView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -25,8 +25,5 @@ urlpatterns = [
     path('clients/', ClientListView.as_view(), name='client-list'),
     path('clients/<int:pk>/', ClientDetailView.as_view(), name='client-detail'),
     path('clients/new/', ClientCreateView.as_view(), name='client-create'),
-    # url(r'^clients/$', clients, name='clients'),
-    # path('client/<str:name>', client, name='client'),
-    # path('client/edit/<str:name>', edit_client, name='edit_client'),
-
+    path('clients/<int:pk>/edit/', ClientEditView.as_view(), name='client-edit')
 ]
