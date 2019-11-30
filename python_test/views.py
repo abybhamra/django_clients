@@ -48,5 +48,22 @@ class ClientEditView(UpdateView):
     template_name = 'client/edit.html'
     fields = ["client_name", "contact_name", "email", "phone_number"]
 
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        if self.request.POST:
+            data["address"] = AddressFormset(self.request.POST, instance=self.object)
+        else:
+            data["address"] = AddressFormset(instance=self.object)
+        return data
+
+    def form_valid(self, form):
+        context = self.get_context_data()
+        address = context["address"]
+        self.object = form.save()
+        if address.is_valid():
+            address.instance = self.object
+            address.save()
+        return super().form_valid(form)
+
     def get_success_url(self):
         return reverse("client-list")

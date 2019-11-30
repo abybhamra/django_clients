@@ -31,6 +31,7 @@ class ClientEditViewTests(TestCase):
 
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'client/edit.html')
+        self.assertIsInstance(response.context["address"], AddressFormset)
 
 
 class ClientListViewTests(TestCase):
