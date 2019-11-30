@@ -1,0 +1,15 @@
+[run]
+omit =
+    venv/*
+    tests/
+    python_test/migrations*
+    python_test/settings.py
+    python_test/wsgi.py
+source =
+    python_test
+
+[html]
+directory = coverage/htmlcov
+
+[xml]
+output = coverage/coverage.xml
