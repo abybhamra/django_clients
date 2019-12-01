@@ -20,7 +20,7 @@
             </div>
         </form>
     </div>
-        <div class="col-md-2">
+    <div class="col-md-2">
         <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -30,7 +30,7 @@
                 <a class="dropdown-item" href="/clients/?sort_by=client_name">Name</a>
                 <a class="dropdown-item" href="/clients/?sort_by=email">Email</a>
                 <a class="dropdown-item" href="/clients/?sort_by=phone_number">Phone Number</a>
-                <a class="dropdown-item" href="/clients/?sort_by=suburb">Suburb</a>
+                <a class="dropdown-item" href="/clients/?sort_by=address__suburb">Suburb</a>
             </div>
         </div>
     </div>
@@ -58,13 +58,7 @@
             <td>{{ client.contact_name }}</td>
             <td>{{ client.email }}</td>
             <td>{{ client.phone_number }}</td>
-            <td>
-                <ul>
-                    {% for address in client.addresses %}
-                    <li>{{ address }}</li>
-                    {% endfor %}
-                </ul>
-            </td>
+            <td>{{ client.address }}</td>
         <tr/>
         {% endfor %}
     </table>

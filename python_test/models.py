@@ -13,13 +13,9 @@ class Client(models.Model):
                                                                                    self.contact_name,
                                                                                    self.email, self.phone_number)
 
-    @property
-    def addresses(self):
-        return Address.objects.all().filter(client=self)
-
 
 class Address(models.Model):
-    client = models.ForeignKey(Client, on_delete=models.CASCADE, null=False)
+    client = models.OneToOneField(Client, on_delete=models.CASCADE, null=False)
     suburb = models.CharField(max_length=10, db_index=True)
     street_name = models.CharField(max_length=50)
     postcode = models.BigIntegerField()

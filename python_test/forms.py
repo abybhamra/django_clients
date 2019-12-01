@@ -10,7 +10,8 @@ AddressFormset = inlineformset_factory(Client, Address,
 SEARCH_KEY_CHOICES = STATUS_CHOICES = (
     ("client_name", "Client Name"),
     ("email", "Email"),
-    ("phone_number", "Phone Number"),)
+    ("phone_number", "Phone Number"),
+    ("address__suburb", "Suburb"))
 
 
 class ClientSearchForm(forms.Form):

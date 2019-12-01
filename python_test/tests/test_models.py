@@ -87,12 +87,7 @@ class TestClient(TestCase):
         client = Client.objects.create(client_name="Digital Classifieds Group",
                                        contact_name="Mathew Care", email="mathew.care@hausples.com.pg",
                                        phone_number="+61398409510")
-        address_1 = Address.objects.create(street_name="some street 1", client=client,
-                                           suburb="Mordialloc", postcode=3195, state="VIC")
-        address_2 = Address.objects.create(street_name="some street 2", client=client,
-                                           suburb="DDD", postcode=3195, state="VIC")
+        address = Address.objects.create(street_name="some street 1", client=client,
+                                         suburb="Mordialloc", postcode=3195, state="VIC")
 
-        client_addresses = client.addresses
-        self.assertEqual(2, len(client_addresses))
-        self.assertIn(address_1, client_addresses)
-        self.assertIn(address_2, client_addresses)
+        self.assertEqual(address, client.address)
