@@ -14,5 +14,8 @@ SEARCH_KEY_CHOICES = STATUS_CHOICES = (
 
 
 class ClientSearchForm(forms.Form):
-    search_key = forms.ChoiceField(choices=SEARCH_KEY_CHOICES)
-    search_value = forms.CharField(required=False)
+    search_key = forms.ChoiceField(choices=SEARCH_KEY_CHOICES,
+                                   widget=forms.Select(attrs={'class': 'custom-select', }), )
+    search_value = forms.CharField(required=False,
+                                   widget=forms.TextInput(attrs={'class': "form-control",
+                                                                 'placeholder': "Search Value"}), )

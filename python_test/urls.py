@@ -21,7 +21,7 @@ from python_test.views import ClientListView, ClientDetailView, ClientCreateView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', TemplateView.as_view(template_name="home.html")),
+    url(r'^$', TemplateView.as_view(template_name="home.html"), name='home'),
     path('clients/', ClientListView.as_view(), name='client-list'),
     path('clients/<int:pk>/', ClientDetailView.as_view(), name='client-detail'),
     path('clients/new/', ClientCreateView.as_view(), name='client-create'),

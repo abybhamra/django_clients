@@ -5,20 +5,6 @@
     <div class="col-md-4">
         <h2>List of Client</h2>
     </div>
-    <div class="col-md-2">
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Sort By
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="/clients/?sort_by=client_name">Name</a>
-                <a class="dropdown-item" href="/clients/?sort_by=email">Email</a>
-                <a class="dropdown-item" href="/clients/?sort_by=phone_number">Phone Number</a>
-                <a class="dropdown-item" href="/clients/?sort_by=suburb">Suburb</a>
-            </div>
-        </div>
-    </div>
     <div class="col-md-6">
         <form method="GET" action="/clients" class="search-form">
             <div class="row">
@@ -33,6 +19,20 @@
                 </div>
             </div>
         </form>
+    </div>
+        <div class="col-md-2">
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sort By
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="/clients/?sort_by=client_name">Name</a>
+                <a class="dropdown-item" href="/clients/?sort_by=email">Email</a>
+                <a class="dropdown-item" href="/clients/?sort_by=phone_number">Phone Number</a>
+                <a class="dropdown-item" href="/clients/?sort_by=suburb">Suburb</a>
+            </div>
+        </div>
     </div>
 </div>
 <div class="row">
