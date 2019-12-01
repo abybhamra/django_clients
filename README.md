@@ -8,14 +8,21 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-Install required python dependencies:
+* Install required python dependencies:
 
 ```
 pip install -r requirements.txt
 ```
-## Running the server
+
+* Run migrations
+
 ```
 python manage.py migrate
+```
+
+## Running the server
+
+```
 python manage.py runserver
 ```
 
