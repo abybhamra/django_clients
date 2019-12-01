@@ -33,6 +33,7 @@ coverage report
 
 ## Built With
 
+* Python 3.7.5
 * [Django](https://www.djangoproject.com/) - The web framework used
 
 ## Thoughts
